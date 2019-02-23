@@ -1,0 +1,40 @@
+<div class="body">
+ <div class="container">
+  <p id="notice"></p>
+
+				<%= flash[:notice] %>
+				<% if @user.errors.any? %>
+ 				 <div id="error_explanation" class="alert alert-danger">
+    			<ul><h3>Error!</h3>
+     			 <% @user.errors.full_messages.each do |message| %>
+     				  <li><%= message %></li>
+    					  <% end %>
+ 						   </ul>
+  							</div>
+							<% end %>
+
+		<h2>User info</h2>
+
+			<%= form_for(@user) do |f| %>
+
+			<div class="field">
+			<label for="user_name">Name</label>
+			<input class="name" type="text" name="user[name]" id="name">
+			</div>
+
+			<div class="field">
+			<h5>Image</h5>
+			<%= f.attachment_field :image, placeholder: "image", class: "user-edit-form user_image" %>
+			</div>
+
+			<div class="field">
+			<h5>Introduction<%= f.text_area :introduction, rows: 3,cols: 17, class: "introduction" %></h5>
+			<br>
+			<%= f.submit 'Update User'%>
+			</div>
+
+			<% end %>
+
+ </div>
+</div>
+

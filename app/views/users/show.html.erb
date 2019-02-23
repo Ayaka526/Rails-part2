@@ -1,0 +1,31 @@
+<%= render 'users/same', book:@post, books: @books, user: @user %>
+
+
+    <div class="col-xs-9">
+        <h2>Books</h2>
+        <table class= "table table-hover table-inverse">
+            <thead>
+
+              <tr>
+                <th class ="account"></th>
+                <th class ="title">Title</th>
+                <th class ="opinion">Opinion</th>
+                <th class ="books-links"></th>
+              </tr>
+            </thead>
+            <tbody>
+               <% @books.each do |user| %>
+                 <tr class ="book-item">
+                    <td class="user-account"> <%= attachment_image_tag @user, :image, fallback: "no-image.jpg",size: '40x40' %></td>
+
+                    <td class="book-title"><%= link_to user.title, book_path(user), class: "book_#{user.id}" %></td>
+
+                    <td class="book-opinion"><%= user.opinion %></td>
+
+                    <td class="book-contents"></td>
+                 </tr>
+
+               <% end %>
+            </tbody>
+        </table>
+     </div>

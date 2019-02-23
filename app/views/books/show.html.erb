@@ -1,0 +1,46 @@
+<%= render 'users/same', book:@book, user: @user %>
+
+
+    <div class="col-xs-9">
+
+        <div class="flash-message" >
+         <% if flash[:success] %>
+            <p><%= flash[:success] %></p>
+         <% end %>
+        </div>
+
+        <h2>Book detail</h2>
+        <table class= "table">
+            <thead>
+
+              <tr>
+                <th class="image"></th>
+                <th class="title"></th>
+                <th class="opinion"></th>
+                <th class="edit-icon"></th>
+                <th class="destroy-icon"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+                 <tr class ="book-item">
+                    <td class="user-account"><%= attachment_image_tag @user, :image, fallback: "no-image.jpg",size: '40x40' %>
+                        <br><%= link_to @user.name, user_path(@user), class: "user_#{@user.id}" %>
+                    </td>
+                    <td class="book-title"><%= @post.title%></td>
+
+                    <td class="book-opinion"><%= @post.opinion%></td>
+
+                    <% if @user.id == current_user.id %>
+                    <td class="book-content">
+                     <%=link_to 'Edit', edit_book_path(@post), class: "btn btn-success btn-xs edit_book_#{@post.id}" %>
+                    </td>
+                    <td class="book-content">
+                     <%= link_to 'Destroy', book_path(@post), class:  "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' }, class: "destroy_book_#{@post.id}"%>
+                     </td>
+                     <% end %>
+                 </tr>
+
+            </tbody>
+        </table>
+     </div>
