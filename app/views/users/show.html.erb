@@ -2,6 +2,12 @@
 
 
     <div class="col-xs-9">
+        <div class="flash-message" >
+         <% if flash[:success] %>
+            <p><%= flash[:success] %></p>
+         <% end %>
+        </div>
+
         <h2>Books</h2>
         <table class= "table table-hover table-inverse">
             <thead>

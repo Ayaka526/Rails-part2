@@ -13,7 +13,7 @@ class BooksController < ApplicationController
 		@book.user_id = current_user.id
 		if @book.save #DBに保存する
 			flash[:success] = "Successfully created."
-			redirect_to book_path(book.id)
+			redirect_to book_path(@book.id)
 		else
 			#flash[:notice] ="Error! Please fill out both of two."
 			render :index
